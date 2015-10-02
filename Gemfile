@@ -46,6 +46,9 @@ group :development do
   gem 'spring'
 end
 
+# For DB buckup
 gem 'seed_dump'
-# rails data to javascript
+# Rails data to javascript
 gem 'gon'
+# For Login
+gem 'devise'
