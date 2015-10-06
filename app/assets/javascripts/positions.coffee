@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+setMapAPI = ->
   center = new google.maps.LatLng(36.10780000000, 140.10869000000)
   options = 
     zoom: 16
@@ -19,7 +19,8 @@ $ ->
       map: map
     )
 
-  dispatcher = new WebSocketRails('49.212.151.224:3000/websocket/', true)
+  #dispatcher = new WebSocketRails('49.212.151.224:3000/websocket/', true)
+  dispatcher = new WebSocketRails('localhost:3000/websocket/', true)
   broadcast_channel = dispatcher.subscribe('broadcast_channel')
   broadcast_channel.bind 'new_position', (message) =>
     position = JSON.parse(message)
@@ -28,3 +29,6 @@ $ ->
       position: new google.maps.LatLng(position.lat, position.lng)
       map: map
     )
+
+$(document).ready(setMapAPI)
+$(document).on('page:load', setMapAPI)

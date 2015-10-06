@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
+  root :to => 'top#index'
+
   devise_for :users
-  root :to => 'positions#index'
+  resource :users, :only => [:show]
+  get 'map/index' , to: 'positions#index'
   post 'positions/create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

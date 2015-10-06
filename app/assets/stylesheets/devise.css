@@ -1,0 +1,25 @@
+.well {  
+  background-color:#f8f8f8!important;
+  border-radius:0!important;
+  border:none!important;
+}
+
+.well.login-box {
+  width:300px;
+  margin:0 auto;
+}
+.well.login-box legend {
+  font-size:26px;
+  text-align:center;
+  font-weight:300;
+}
+.well.login-box label {
+  font-weight:300;
+  font-size:16px;
+  
+}
+.well.login-box input[type="text"] {
+  box-shadow:none;
+  border-color:#ddd;
+  border-radius:0;
+}
