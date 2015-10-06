@@ -52,3 +52,8 @@ gem 'seed_dump'
 gem 'gon'
 # For Login
 gem 'devise'
+
+# For Bootstrap
+gem 'less-rails'
+gem 'therubyracer', platforms: :ruby
+gem 'twitter-bootstrap-rails'
