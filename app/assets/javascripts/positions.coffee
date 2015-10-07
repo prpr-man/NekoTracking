@@ -22,6 +22,7 @@ setMapAPI = ->
     marker = new google.maps.Marker(
       position: new google.maps.LatLng(latitudes[latitudes.length-1], longitudes[longitudes.length-1])
       map: map
+      icon: "/assets/pin.png"
     )
 
   lines = new google.maps.Polyline(
