@@ -1,0 +1,2 @@
+$ ->
+  $("[name='imei[private]']").bootstrapSwitch()
