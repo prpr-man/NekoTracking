@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002003525) do
+ActiveRecord::Schema.define(version: 20151006064938) do
+
+  create_table "imeis", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "number"
+    t.boolean  "private",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "positions", force: :cascade do |t|
     t.text     "latitude"

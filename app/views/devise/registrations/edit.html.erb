@@ -39,7 +39,51 @@
     </div>
 
     <div class="actions row">
-      <%= f.submit "Update", class: "btn btn-primary pull-right" %>
+      <%= f.submit "Update", class: "btn btn-primary center-block" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="well">
+  <legend>Devices</legend>
+  <% current_user.imeis.each do |imei| %>
+    <div class="from-group">
+      <div class="row">
+        <%= form_for imei, url: "/imeis", html: {class: "form-inline"} do |f| %>
+          <%= f.hidden_field :id, value: imei.id %>
+        
+          <div class="col-xs-6">
+            <label class="col-xs-4 control-label">Device ID</label>
+            <div class="col-xs-3"><%= imei.number %></div>
+            <div class="col-xs-5">
+              <input type="checkbox" name="imei[private]" data-on-text="Private" data-off-text="Public" <% if imei.private %>checked<% end %>>
+            </div>
+          </div>
+          <div class="actions row col-xs-3">
+            <%= f.submit "Update", class: "btn btn-primary" %>
+          </div>
+          
+        <% end %>
+        <div class="col-xs-3">
+          <%= button_to "Delete", imeis_path, params: {id: imei.id}, data: { confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="well">
+  <%= form_for @imei, html: {class: "form-horizontal"} do |f| %>
+  <div class="form-group">
+    <%= f.label :number, class: "col-sm-2 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :number, autocomplete: "off", class: "form-control" %>
+    </div>
+    <input type="checkbox" name="imei[private]" data-on-text="Private" data-off-text="Public" checked>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+  <div class="actions row">
+      <%= f.submit "Update", class: "btn btn-primary center-block" %>
     </div>
   <% end %>
 </div>
@@ -48,7 +92,7 @@
   <legend>Delete my account</legend>
   <p>アカウントを削除します．この操作は元に戻すことはできません．</p>
   <div class="row">
-    <p><%= button_to "Delete", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger pull-right" %></p>
+    <p><%= button_to "Delete", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger center-block" %></p>
   </div>
 </div>
 
